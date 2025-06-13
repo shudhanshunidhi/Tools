@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Basic Meta Tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image to PDF Converter | JPEG to PDF</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>JPEG to PDF Converter | Convert Images to PDF Online for Free</title>
+  <meta name="description" content="Free online tool to convert JPEG images to PDF documents. Merge multiple photos into a single PDF file instantly. No registration required, works on all devices.">
+  <meta name="keywords" content="jpeg to pdf online,jpeg to pdf online free , ehance image online free, AI image enhancer free, image to pdf, convert photos to pdf, merge images to pdf, free pdf converter, online pdf converter, jpg to pdf">
+  <meta name="author" content="PDF Tools">
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
     :root {
       --primary: #4361ee;
-      --secondary: #3f37c9;
+      --primary-dark: #3a56d4;
       --accent: #4cc9f0;
-      --light: #f8f9fa;
-      --dark: #212529;
       --success: #4bb543;
       --warning: #f39c12;
       --danger: #e74c3c;
+      --light: #f8f9fa;
+      --light-gray: #e9ecef;
+      --medium-gray: #adb5bd;
+      --dark: #212529;
       --border-radius: 12px;
-      --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      --transition: all 0.3s ease;
+      --border-radius-lg: 16px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
     * {
@@ -28,176 +44,219 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      min-height: 100vh;
-      padding: 20px;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e2e8f0 100%);
       color: var(--dark);
       line-height: 1.6;
+      min-height: 100vh;
+      padding: 0;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 30px;
+    /* Header */
+    header {
       background: white;
+      box-shadow: var(--shadow-sm);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Main Layout */
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    /* Ad Containers */
+    .ad-container {
+      width: 100%;
+      background: white;
+      padding: 1rem;
       border-radius: var(--border-radius);
-      box-shadow: var(--box-shadow);
-      position: relative;
+      box-shadow: var(--shadow-sm);
+      margin: 1.5rem auto;
+      text-align: center;
       overflow: hidden;
     }
 
-    .container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
+    .ad-label {
+      font-size: 0.75rem;
+      color: var(--medium-gray);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .ad-placeholder {
       width: 100%;
-      height: 8px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
+      background: var(--light-gray);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--medium-gray);
+      font-size: 0.9rem;
     }
 
-    h1 {
+    .ad-top .ad-placeholder {
+      height: 90px;
+      max-width: 728px;
+      margin: 0 auto;
+    }
+
+    .ad-bottom .ad-placeholder {
+      height: 250px;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    /* Converter Card */
+    .converter-card {
+      background: white;
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .card-header {
+      padding: 2rem 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
       text-align: center;
-      margin-bottom: 25px;
-      color: var(--primary);
+    }
+
+    .card-header h1 {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
       font-weight: 600;
-      font-size: 2.2rem;
     }
 
-    .description {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #666;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+    .card-header p {
+      opacity: 0.9;
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
+    .card-body {
+      padding: 2rem;
+    }
+
+    /* Upload Area */
     .upload-area {
-      border: 2px dashed #ccc;
+      border: 2px dashed var(--light-gray);
       border-radius: var(--border-radius);
-      padding: 40px 20px;
+      padding: 2.5rem 1rem;
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 1.5rem;
       transition: var(--transition);
-      background-color: rgba(255, 255, 255, 0.5);
       cursor: pointer;
+      position: relative;
     }
 
     .upload-area:hover {
       border-color: var(--primary);
-      background-color: rgba(67, 97, 238, 0.05);
+      background: rgba(67, 97, 238, 0.03);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
 
     .upload-area.active {
       border-color: var(--success);
-      background-color: rgba(75, 181, 67, 0.05);
+      background: rgba(75, 181, 67, 0.05);
     }
 
     .upload-icon {
-      font-size: 48px;
+      font-size: 3rem;
       color: var(--primary);
-      margin-bottom: 15px;
+      margin-bottom: 1rem;
     }
 
     .upload-text {
-      margin-bottom: 15px;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
       font-weight: 500;
     }
 
     .upload-btn {
       background: var(--primary);
       color: white;
-      padding: 12px 24px;
+      padding: 0.75rem 1.75rem;
       border-radius: 50px;
-      cursor: pointer;
-      display: inline-block;
       font-weight: 500;
-      transition: var(--transition);
       border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       font-size: 1rem;
     }
 
     .upload-btn:hover {
-      background: var(--secondary);
+      background: var(--primary-dark);
       transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
 
     input[type="file"] {
       display: none;
     }
 
-    .btn-group {
+    /* Preview Area */
+    .preview-container {
+      margin: 2rem 0;
+    }
+
+    .preview-title {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
       display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
-    }
-
-    .btn {
-      padding: 12px 24px;
-      border-radius: 50px;
-      cursor: pointer;
-      font-weight: 500;
-      transition: var(--transition);
-      border: none;
-      font-size: 1rem;
-      display: inline-flex;
       align-items: center;
-      gap: 8px;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: var(--secondary);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
-    }
-
-    .btn-accent {
-      background: var(--accent);
-      color: white;
-    }
-
-    .btn-accent:hover {
-      background: #3ab7e0;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(76, 201, 240, 0.3);
-    }
-
-    .btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none !important;
-      box-shadow: none !important;
+      gap: 0.5rem;
     }
 
     .preview {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-bottom: 30px;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
     }
 
     .preview-item {
       position: relative;
-      border-radius: 8px;
+      border-radius: var(--border-radius);
       overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow-sm);
       transition: var(--transition);
-      width: 160px;
-      height: 160px;
+      aspect-ratio: 1;
     }
 
     .preview-item:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      box-shadow: var(--shadow-md);
     }
 
     .preview-item img {
@@ -208,8 +267,8 @@
 
     .preview-item .remove-btn {
       position: absolute;
-      top: 5px;
-      right: 5px;
+      top: 0.5rem;
+      right: 0.5rem;
       background: var(--danger);
       color: white;
       width: 24px;
@@ -228,21 +287,81 @@
       opacity: 1;
     }
 
+    /* Buttons */
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 0.75rem 1.75rem;
+      border-radius: 50px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-accent:hover {
+      background: #3ab7e0;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Status & Download */
+    .status {
+      text-align: center;
+      margin: 1rem 0;
+      font-weight: 500;
+      color: var(--primary);
+      min-height: 1.5rem;
+    }
+
     .download-area {
       text-align: center;
-      margin-top: 20px;
+      margin-top: 2rem;
       animation: fadeIn 0.5s ease;
     }
 
     .download-btn {
       background: var(--success);
       color: white;
-      padding: 12px 24px;
+      padding: 0.75rem 1.75rem;
       border-radius: 50px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 0.5rem;
       font-weight: 500;
       transition: var(--transition);
       border: none;
@@ -253,60 +372,21 @@
     .download-btn:hover {
       background: #3fa337;
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(75, 181, 67, 0.3);
-    }
-
-    .status {
-      text-align: center;
-      margin: 20px 0;
-      font-weight: 500;
-      color: var(--primary);
+      box-shadow: var(--shadow-md);
     }
 
     canvas {
       display: none;
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .container {
-        padding: 20px;
-      }
-      
-      h1 {
-        font-size: 1.8rem;
-      }
-      
-      .btn-group {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .btn {
-        width: 100%;
-        max-width: 250px;
-        justify-content: center;
-      }
-      
-      .preview-item {
-        width: 120px;
-        height: 120px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        padding: 15px;
-      }
-      
-      .upload-area {
-        padding: 30px 15px;
-      }
-      
-      .preview-item {
-        width: 100px;
-        height: 100px;
-      }
+    /* Footer */
+    footer {
+      background: white;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--medium-gray);
+      margin-top: 2rem;
     }
 
     /* Animations */
@@ -328,45 +408,182 @@
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 0 1rem;
+      }
+      
+      .card-header {
+        padding: 1.5rem 1rem;
+      }
+      
+      .card-header h1 {
+        font-size: 1.5rem;
+      }
+      
+      .card-body {
+        padding: 1.5rem;
+      }
+      
+      .preview {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+      
+      .ad-top .ad-placeholder {
+        height: 90px;
+      }
+      
+      .ad-bottom .ad-placeholder {
+        height: 250px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-container {
+        padding: 1rem;
+      }
+      
+      .card-header h1 {
+        font-size: 1.3rem;
+      }
+      
+      .card-header p {
+        font-size: 0.9rem;
+      }
+      
+      .upload-area {
+        padding: 1.5rem 1rem;
+      }
+      
+      .upload-text {
+        font-size: 1rem;
+      }
+      
+      .btn-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+      }
+      
+      .preview {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 0.75rem;
+      }
+      
+      .ad-top .ad-placeholder {
+        height: 50px;
+      }
+      
+      .ad-bottom .ad-placeholder {
+        height: 100px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Image to PDF Converter</h1>
-    <p class="description">Convert multiple JPEG images to a single PDF file. Enhance your images before conversion for better quality.</p>
-    
-    <div class="upload-area" id="uploadArea">
-      <div class="upload-icon">📁</div>
-      <p class="upload-text">Drag & drop your JPEG images here or</p>
-      <label for="fileUpload" class="upload-btn">
-        <span>Browse Files</span>
-      </label>
-      <input type="file" id="fileUpload" accept="image/jpeg" multiple>
-    </div>
-    
-    <div class="preview" id="preview"></div>
-    
-    <div class="btn-group">
-      <button id="enhanceBtn" class="btn btn-accent" disabled>
-        <span>Enhance Images</span>
-      </button>
-      <button id="convertBtn" class="btn btn-primary" disabled>
-        <span>Convert to PDF</span>
-      </button>
-    </div>
-    
-    <div class="status" id="status"></div>
-    
-    <canvas id="canvas"></canvas>
-    
-    <div class="download-area" id="downloadArea" style="display: none;">
-      <p>Your PDF is ready!</p>
-      <a id="downloadLink" class="download-btn">
-        <span>Download PDF</span>
-        <span>⬇️</span>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="#" class="logo">
+        <i class="fas fa-file-pdf"></i>
+        <span>PDF Tools</span>
       </a>
     </div>
-  </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <!-- Top Ad Section -->
+    <div class="ad-container ad-top">
+      <div>
+        <div class="ad-label">Advertisement</div>
+        <div class="ad-placeholder">
+          Leaderboard Ad (728x90)
+        </div>
+      </div>
+    </div>
+
+    <!-- Converter Card -->
+    <div class="converter-card">
+      <div class="card-header">
+        <h1>JPEG to PDF Converter</h1>
+        <p>Convert multiple images to a single PDF file in seconds. Works on all devices with no installation required.</p>
+      </div>
+      
+      <div class="card-body">
+        <!-- Upload Area -->
+        <div class="upload-area" id="uploadArea">
+          <div class="upload-icon">
+            <i class="fas fa-cloud-upload-alt"></i>
+          </div>
+          <p class="upload-text">Drag & drop your JPEG images here or</p>
+          <label for="fileUpload" class="upload-btn">
+            <i class="fas fa-folder-open"></i>
+            <span>Browse Files</span>
+          </label>
+          <input type="file" id="fileUpload" accept="image/jpeg" multiple>
+        </div>
+        
+        <!-- Preview Area -->
+        <div class="preview-container" id="previewContainer" style="display: none;">
+          <h3 class="preview-title">
+            <i class="fas fa-images"></i>
+            <span>Selected Images</span>
+          </h3>
+          <div class="preview" id="preview"></div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="btn-group">
+          <button id="enhanceBtn" class="btn btn-accent" disabled>
+            <i class="fas fa-magic"></i>
+            <span>Enhance Images</span>
+          </button>
+          <button id="convertBtn" class="btn btn-primary" disabled>
+            <i class="fas fa-file-pdf"></i>
+            <span>Convert to PDF</span>
+          </button>
+        </div>
+        
+        <!-- Status Messages -->
+        <div class="status" id="status"></div>
+        
+        <!-- Hidden Canvas -->
+        <canvas id="canvas"></canvas>
+        
+        <!-- Download Area -->
+        <div class="download-area" id="downloadArea" style="display: none;">
+          <p>Your PDF is ready!</p>
+          <a id="downloadLink" class="download-btn">
+            <i class="fas fa-download"></i>
+            <span>Download PDF</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Ad Section -->
+    <div class="ad-container ad-bottom">
+      <div>
+        <div class="ad-label">Advertisement</div>
+        <div class="ad-placeholder">
+          Rectangle Ad (300x250)
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 PDF Tools. All rights reserved.</p>
+  </footer>
 
   <!-- jsPDF CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -376,6 +593,7 @@
     // DOM Elements
     const fileUpload = document.getElementById('fileUpload');
     const uploadArea = document.getElementById('uploadArea');
+    const previewContainer = document.getElementById('previewContainer');
     const preview = document.getElementById('preview');
     const enhanceBtn = document.getElementById('enhanceBtn');
     const convertBtn = document.getElementById('convertBtn');
@@ -416,6 +634,7 @@
       preview.innerHTML = '';
       images = [];
       statusEl.textContent = `Loaded ${files.length} image(s)`;
+      previewContainer.style.display = 'block';
       
       Array.from(files).forEach((file, index) => {
         if (file.type === 'image/jpeg') {
@@ -455,6 +674,9 @@
         updateButtons();
         statusEl.textContent = `Removed image ${index + 1}`;
         setTimeout(() => statusEl.textContent = '', 2000);
+        if (images.length === 0) {
+          previewContainer.style.display = 'none';
+        }
       });
       
       previewItem.appendChild(imgElement);
@@ -508,7 +730,7 @@
           preview.children[index].querySelector('img').src = newImg.src;
         });
 
-        enhanceBtn.innerHTML = '<span>Enhance Images</span>';
+        enhanceBtn.innerHTML = '<i class="fas fa-magic"></i><span>Enhance Images</span>';
         enhanceBtn.disabled = false;
         statusEl.textContent = 'Images enhanced successfully!';
         setTimeout(() => statusEl.textContent = '', 3000);
@@ -544,10 +766,10 @@
 
         downloadLink.href = URL.createObjectURL(pdf.output('blob'));
         downloadLink.download = 'converted.pdf';
-        downloadLink.querySelector('span:first-child').textContent = `Download PDF (${count} page${count > 1 ? 's' : ''})`;
+        downloadLink.querySelector('span').textContent = `Download PDF (${count} page${count > 1 ? 's' : ''})`;
         downloadArea.style.display = 'block';
         
-        convertBtn.innerHTML = '<span>Convert to PDF</span>';
+        convertBtn.innerHTML = '<i class="fas fa-file-pdf"></i><span>Convert to PDF</span>';
         convertBtn.disabled = false;
         statusEl.textContent = 'PDF created successfully!';
       }, 100);
